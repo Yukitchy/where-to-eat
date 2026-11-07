@@ -227,7 +227,7 @@ function cover(){var hero=document.querySelector('.hero');if(!hero)return;var hb
 function all(){fit();cover()}var W0=innerWidth;all();addEventListener('resize',function(){if(innerWidth!==W0){W0=innerWidth;all()}});addEventListener('orientationchange',function(){setTimeout(all,200)});if(document.fonts&&document.fonts.ready)document.fonts.ready.then(all);addEventListener('load',cover)})();
 try{if(localStorage.getItem('eatmap_area_hint'))document.querySelector('details.areasw')?.classList.add('seen')}catch(_){}document.querySelector('details.areasw summary')?.addEventListener('click',()=>{try{localStorage.setItem('eatmap_area_hint','1')}catch(_){}document.querySelector('details.areasw').classList.add('seen')});
 const asw=document.querySelector('details.areasw');if(asw)document.addEventListener('click',ev=>{if(asw.open&&!ev.target.closest('details.areasw'))asw.open=false});
-document.querySelectorAll('.car').forEach(function(c){var t=c.querySelector('.trk'),im=t.children,n=im.length,pv=c.querySelector('.pv'),nx=c.querySelector('.nx'),cn=c.querySelector('.cn');
+document.querySelectorAll('.car').forEach(function(c){var t=c.querySelector('.trk'),im=t.children,n=im.length,pv=c.querySelector('.pv'),nx=c.querySelector('.nx'),cn=c.querySelector('.cn');if(!n)return;
 function cur(){return Math.round(t.scrollLeft/t.clientWidth)}
 function sync(){var i=Math.max(0,Math.min(n-1,cur()));pv.hidden=i===0;nx.hidden=i===n-1;cn.innerHTML='<b>'+(im[i].dataset.l||'')+'</b> '+(i+1)+'/'+n}
 function go(d){t.scrollTo({left:(cur()+d)*t.clientWidth,behavior:'smooth'})}
