@@ -428,10 +428,10 @@ chips.forEach(function(b){b.addEventListener('click',function(){var on=b.getAttr
 function fit(){h1.style.fontSize='';var em=sum.querySelector('em'),hint=sum.querySelector('.hint'),chev=sum.querySelector('.chev');if(!hint)return;em.style.cssText='';sum.classList.remove('wrap');hint.style.marginLeft='';hint.querySelector('.tl').style.marginLeft='';var an=hint.style.animation,hd=hint.style.display;hint.style.display='inline-flex';hint.style.animation='none';
 function dropped(){return hint.getBoundingClientRect().top>chev.getBoundingClientRect().bottom-2}
 function done(){hint.style.display=hd;hint.style.animation=an}
-var f=parseFloat(getComputedStyle(h1).fontSize),r=document.createRange();r.selectNodeContents(h1.firstChild);var a=r.getBoundingClientRect().width/f,w=h1.clientWidth,multi=em.getClientRects().length>1;
+var f=parseFloat(getComputedStyle(h1).fontSize),r=document.createRange();r.setStart(h1,0);r.setEndBefore(h1.querySelector('details.areasw'));var a=r.getBoundingClientRect().width/f,w=h1.clientWidth,multi=em.getClientRects().length>1;
 if(multi){if(dropped())wrapIt();done();return}
 if(!dropped()){var b=em.getBoundingClientRect().width/f,c=8+hint.offsetWidth;if(a-b>0){var nf=Math.max(f,Math.min(f*1.2,c/(a-b),w/a));h1.style.fontSize=nf+'px';if(dropped())h1.style.fontSize=''}done();return}
-var nf2=Math.min(f*1.12,w/a);h1.style.fontSize=nf2+'px';var L=a*nf2,bw=em.getBoundingClientRect().width,k=(L-(8+hint.offsetWidth))/bw;
+var nf2=Math.min(f*1.12,(w-8)/a);h1.style.fontSize=nf2+'px';var L=a*nf2,bw=em.getBoundingClientRect().width,k=(L-(16+hint.offsetWidth))/bw;
 if(k>=.3&&k<1){var sx=Math.max(k,.64),fs=k/sx;em.style.display='inline-block';em.style.fontSize=(1.25*fs)+'em';em.style.transformOrigin='left center';em.style.transform='scaleX('+sx+')';em.style.marginRight=(-(1-sx)*em.getBoundingClientRect().width/sx)+'px';if(!dropped()){done();return}}
 em.style.cssText='';h1.style.fontSize='';wrapIt();done();
 function wrapIt(){sum.classList.add('wrap');var cv=chev.getBoundingClientRect(),sr=sum.getBoundingClientRect(),cx=cv.left+cv.width/2-sr.left,bw2=hint.querySelector('b').offsetWidth,R=Math.min(sr.width,Math.max(bw2,cx+bw2/2)),ml=Math.max(0,R-bw2);hint.style.marginLeft=ml+'px';hint.querySelector('.tl').style.marginLeft=Math.max(0,cx-10-ml)+'px'}}
